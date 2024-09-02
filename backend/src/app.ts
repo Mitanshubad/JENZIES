@@ -41,7 +41,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors({
-  origin: 'https://jenzies-ujvc.vercel.app',  // Allow your frontend origin
+  origin: 'https://www.jenzies.store',  // Allow your frontend origin
   credentials: true,               // Allow cookies or credentials to be sent
 }));
 
