@@ -23,8 +23,6 @@ VITE_APP_ID=`from firebase`
 
 VITE_SERVER=`Your Backend Server URl`
 
-# Install Dependencies
-
 **For Backend** - `npm i && npm run build`
 
 
