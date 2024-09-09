@@ -23,6 +23,4 @@ VITE_APP_ID=`from firebase`
 
 VITE_SERVER=`Your Backend Server URl`
 
-VITE_STRIPE_KEY=`Stripe Publishable Key`
 
-_fill each filed with your info respectively_
