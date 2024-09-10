@@ -12,33 +12,21 @@ import { motion } from "framer-motion";
 import { Slider } from "6pp";
 import { TbTruckDelivery } from "react-icons/tb";
 import { LuShieldCheck } from "react-icons/lu";
-import one from "../assets/images/one.jpg"
-import two from "../assets/images/two.jpg"
-import three from "../assets/images/three.jpg"
-import four from "../assets/images/four.jpg"
-import five from "../assets/images/five.jpg"
+import one from "../assets/images/one.jpg";
+import two from "../assets/images/two.jpg";
+import three from "../assets/images/three.jpg";
+import four from "../assets/images/four.jpg";
+import five from "../assets/images/five.jpg";
+import { useState } from "react";
 
-const banners = [
-  `${two}`,
-  `${one}`,
-  
- 
-  `${five}`,
-  `${three}`,
-  `${four}`,
-  
- 
-
-];
+const banners = [`${two}`, `${one}`, `${five}`, `${three}`, `${four}`];
 const categories = [
   "CARGO MEN",
   "SHIRT MEN",
   "CARGO WOMEN",
   "TOP",
-  "JENS MEN",
-  "JENS WOMEN",
-
-  
+  "JEANS MEN",
+  "JEANS WOMEN",
 ];
 
 const services = [
@@ -61,7 +49,7 @@ const services = [
 
 const Home = () => {
   const { data, isError, isLoading } = useLatestProductsQuery("");
-
+  const [categorie, setCategort] = useState(categories);
   const dispatch = useDispatch();
 
   const addToCartHandler = (cartItem: CartItem) => {
@@ -77,37 +65,53 @@ const Home = () => {
       " "
     );
 
+  const menhandler = () => {
+    setCategort(["CARGO MEN", "SHIRT MEN", "CARGO WOMEN"]);
+  };
+
+  const womenhandler = () => {
+    setCategort(["CARGO WOMEN", "TOP", "JEANS MEN", "JEANS WOMEN"]);
+  };
+
   return (
     <>
       <div className="home">
         <section></section>
 
         <div>
-  <aside>
-    <h1>Collections</h1> 
-    <ul>
-      {categories.map((i) => (
-        <li key={i}>
+          <aside className=" flex flex-col items-center p-1 ">
+            <h1>Collections</h1>
+            <div className="flex  text-black text-1xl m-3">
+            <button className=" bg-slate-100 rounded-lg p-1 m-1 w-min " onClick={menhandler}>MEN</button>
+            <button className=" bg-slate-100 rounded-lg p-1 m-1 w-min" onClick={womenhandler}>WOMEN</button>
+            </div>
+          
+            <ul>
+              {categorie.map((i) => (
+                <li key={i}>
+                  <Link
+                    to={`/search?category=${i.toLowerCase()}`}
+                    className="text-black "
+                  >
+                    {i}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
+          <Slider
+            autoplay
+            autoplayDuration={1500}
+            showNav={false}
+            images={banners}
+          />
+        </div>
+        <h1>
+          New Launches
           <Link
-            to={`/search?category=${i.toLowerCase()}`}
-            className="text-black bg-slate-100 rounded-lg p-1 m-1"  // Change category link text color to black
+            to="/search"
+            className="findmore  bg-slate-100 rounded-lg p-1 m-1"
           >
-            {i}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </aside>
-  <Slider
-    autoplay
-    autoplayDuration={1500}
-    showNav={false}
-    images={banners}
-  />
-</div>
-        <h1 >
-        New Launches
-          <Link to="/search" className="findmore  bg-slate-100 rounded-lg p-1 m-1">
             More
           </Link>
         </h1>
@@ -147,7 +151,7 @@ const Home = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-           JENZIES
+            JENZIES
           </motion.h2>
           {coverMessage.map((el, i) => (
             <motion.span
@@ -175,46 +179,6 @@ const Home = () => {
           <FaAnglesDown />
         </motion.span>
       </article>
-
-      {/* <article className="our-clients">
-        <div>
-          <h2>Our Clients</h2>
-          <div>
-            {clients.map((client, i) => (
-              <motion.img
-                initial={{
-                  opacity: 0,
-                  x: -10,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  x: 0,
-                  transition: {
-                    delay: i / 20,
-                    ease: "circIn",
-                  },
-                }}
-                src={client.src}
-                alt={client.alt}
-                key={i}
-              />
-            ))}
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: -100 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: {
-                delay: clients.length / 20,
-              },
-            }}
-          >
-            Trusted By 100+ Companies in 30+ countries
-          </motion.p>
-        </div>
-      </article> */}
 
       <hr
         style={{
