@@ -1,8 +1,7 @@
 .home {
-  padding: 2rem 5%;
+  padding: 1rem 5%; // Reduced top padding to move the component closer to the top
   display: flex;
   flex-direction: column;
-  // min-height: calc(100vh - 4rem);
   max-width: 1920px;
   margin: auto;
   width: 100%;
@@ -18,12 +17,11 @@
   > div {
     @include flex;
     align-items: stretch;
-    margin: 2rem 0;
+    margin: 1rem 0; // Reduced vertical margin to bring content closer
     gap: 5rem;
 
     aside {
       width: 10%;
-      // border: 1px solid $color3;
       flex: none;
       h1 {
         @include heading(1px);
@@ -56,7 +54,7 @@
 
   > h1 {
     @include heading(1px);
-    margin-top: 3rem;
+    margin-top: 1rem; // Reduced top margin for the heading
     @include flex(row, space-between, center);
   }
 
@@ -65,7 +63,7 @@
   }
 
   > main {
-    margin: 2rem 0;
+    margin: 1rem 0; // Reduced vertical margin for the main section
     width: 100%;
     display: flex;
     gap: 1rem;
