@@ -77,10 +77,10 @@ const Home = () => {
     <>
       <div className="home">
         <section></section>
-
+  <h1>Collections</h1>
         <div>
           <aside className=" flex flex-col items-center p-1 ">
-            <h1>Collections</h1>
+          
             <div className="flex  text-black text-1xl m-3">
             <button className=" bg-slate-100 rounded-lg p-1 m-1 w-min " onClick={menhandler}>MEN</button>
             <button className=" bg-slate-100 rounded-lg p-1 m-1 w-min" onClick={womenhandler}>WOMEN</button>
